@@ -22,7 +22,7 @@
     }
     private static void OnFileRenamed(object sender, FileSystemEventArgs e)         //переименование файла
     {
-        string logMessage = $"{DateTime.Now} - File {e.ChangeType}: {e.Name};";     //сообщение
+        string logMessage = $"{DateTime.Now} - File {e.ChangeType}: {e.FullPath} - {e.Name};";     //сообщение
         logWriter.WriteLine(logMessage);                                            //запись сообщения в лог
         Console.WriteLine(logMessage);                                              //temp вывод сообщения в консоль
     }
@@ -32,7 +32,7 @@
         if (watcher != null)                                                        
         {
             watcher.EnableRaisingEvents = false;
-            watcher.Dispose();                                                      //закрыть наблюдатель
+            watcher.Dispose();              
         }
         if (logWriter != null)
         {
